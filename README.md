@@ -25,3 +25,29 @@ manage oppotiment (as a proffecional):
 rating of proffecinal
 
 discount cuppon 
+
+
+
+
+home page :
+popular services
+
+
+footer :
+find a profes
+login
+join as 
+mobile app
+helpdesk
+about
+
+country dropdown
+
+
+simple signup:
+name
+location
+pin 
+phone 
+emai
+age
