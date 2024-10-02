@@ -61,4 +61,4 @@ const professionaluserSchema = new Schema({
 
 });
 
-const User = mongoose.model('PUser', professionaluserSchema);
+export default User = mongoose.model("PUser", professionaluserSchema);
