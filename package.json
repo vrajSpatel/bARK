@@ -11,7 +11,8 @@
   "dependencies": {
     "mongoose": "^8.6.0",
     "next": "14.2.7",
-    "react": "^18",
+    "reacr": "^1.0.0",
+    "react": "^18.3.1",
     "react-dom": "^18"
   },
   "devDependencies": {
