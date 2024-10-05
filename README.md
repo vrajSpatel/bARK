@@ -45,3 +45,11 @@ helpdesk
 about
 
 country dropdown
+
+simple signup:
+name
+location
+pin 
+phone 
+emai
+age
