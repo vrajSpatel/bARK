@@ -10,9 +10,13 @@ var Authentication = new Schema({
     type: String,
     require: true,
   },
+  professional: {
+    type: String,
+    require: true,
+  },
 });
 
-const SigninModel =
+const authModel =
   mongoose.models.Authentication ||
   mongoose.model("Authentication", Authentication);
-export default SigninModel;
+export default authModel;
