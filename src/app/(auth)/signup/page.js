@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import dogimage from "../../assets/dog_image.jpg    ";
+import dogimage from "../../assets/dog_image.jpg";
 
 export default function SignUp() {
   return (

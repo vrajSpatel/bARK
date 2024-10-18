@@ -3,6 +3,7 @@ import authModel from "@/lib/Schema/Authentication";
 import { validateEmail } from "@/lib/utils/validators";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
 export async function POST(request) {
   const body = await request.formData();
   var email = body.get("email");
@@ -22,15 +23,4 @@ export async function POST(request) {
   } else {
     return Response.json({ error: "password is incorrect" }, { status: 401 });
   }
-  // console.log(passwordMatch);
-  // password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-  // const user = new authModel({
-  //   email,
-  //   password,
-  // });
-  // console.log(await user.save());
-  // console.log(mongoose.models);
-
-  // console.log(dbConnect().readyState);
-  // return Response.json({ greet: "hello world" });
 }
