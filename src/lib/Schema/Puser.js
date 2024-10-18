@@ -1,64 +1,56 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const professionaluserSchema = new Schema({
   name: {
     type: String,
-    require: true
+    require: true,
   },
   service: {
     type: String,
-    require: true
+    require: true,
   },
-
   area: {
-    naitonwide: {
+    nationwide: {
       type: Boolean,
-      require: true
+      require: true,
     },
-    pincode :{
-      type : String,
-      default :null
+    pincode: {
+      type: Number,
     },
-    radius : {
-      type : Number,
-      default : null
-    }
-  },
-
-  companyName:String,
-
-  email : {
-    type : String,
-    require : true
-  },
-
-  tellNumber:{
-    type : String,
-    require : true
-  },
-
-  website : {
-    link:{
-      type : String
+    radius: {
+      type: Number,
     },
-    exsist : {
-      type : Boolean,
-      require : true
-    }
   },
-
+  companyName: String,
+  email: {
+    type: String,
+    require: true,
+  },
+  tellNumber: {
+    type: String,
+    require: true,
+  },
+  website: {
+    link: {
+      type: String,
+    },
+    exist: {
+      type: Boolean,
+      require: true,
+    },
+  },
   company: {
-    size : {
-      type : String,
-      require : true
+    size: {
+      type: String,
+      require: true,
     },
-    salesTeam : Boolean,
-    socialMedia : Boolean
+    salesTeam: Boolean,
+    socialMedia: Boolean,
   },
-
-  
-
 });
 
-export default User = mongoose.model("PUser", professionaluserSchema);
+const ProfessionalUser =
+  mongoose.models.ProfessionalUser ||
+  mongoose.model("ProfessionalUser", professionaluserSchema);
+export default ProfessionalUser;
