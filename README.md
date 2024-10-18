@@ -49,7 +49,16 @@ country dropdown
 simple signup:
 name
 location
-pin 
-phone 
+pin
+phone
 emai
 age
+
+professional user:
+name:Dharmik patel
+website:{"exist":"true","link":"http://dharmikpatel.com"}
+company:{"size":"more than 200","salesTeam":"false","socialMedia":"true"}
+tellNumber:123
+area:{"nationwide":"true","pincode":"390024","radius":"150"}
+service:web development
+companyName:nothing special

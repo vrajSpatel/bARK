@@ -8,6 +8,7 @@ import {
 } from "@/lib/utils/validators";
 import ProfessionalUser from "@/lib/Schema/Puser";
 import { dbConnect } from "@/lib/db";
+
 export async function POST(request) {
   try {
     try {

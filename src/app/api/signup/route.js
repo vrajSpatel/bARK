@@ -54,6 +54,7 @@ export async function POST(request) {
         return Response.json({
           success: "account created successfully!",
           auth_token: token,
+          professional,
         });
       } catch (error) {
         console.log(error);
@@ -63,7 +64,6 @@ export async function POST(request) {
         );
       }
     }
-    
   } catch (err) {
     console.log(err);
     return Response.json(

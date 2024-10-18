@@ -1,8 +1,52 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import dogimage from "../../assets/dog_image.jpg";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+  const router = useRouter();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    professional: "",
+  });
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const signupHandler = () => {
+    const formData = new FormData();
+    formData.append("email", userData.email);
+    formData.append("password", userData.password);
+    formData.append("professional", userData.professional);
+
+    //await fetch
+    const response = {
+      success: "account created successfully!",
+      auth_token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRoYXJtaWsyNzQ1OEBnbWFpbC5jb20iLCJpYXQiOjE3MjkyNTQ2OTIsImV4cCI6MTczMDExODY5Mn0.-IElcVExJ-tgUBJdYJTmX6X2m-Adux-O6SFndmVWJps",
+      professional: "0",
+    };
+
+    if (response.success) {
+      // set cookies in nextjs : auth_token, professional, userdataIncomplete
+      if (response?.professional === "0") {
+        router.push("/signup/userdetail");
+        //redirect user to userdetails
+      } else if (response?.professional === "1") {
+        //redirect user to userdetails
+        router.push("/signup/professionaluser");
+      }
+    } else if (response.error) {
+      return;
+    }
+  };
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
@@ -63,11 +107,15 @@ export default function SignUp() {
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="email"
                     placeholder="Email"
+                    onChange={handleChange}
+                    value={userData.email}
                   />
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="password"
                     placeholder="Password"
+                    onChange={handleChange}
+                    value={userData.password}
                   />
 
                   <div className="mt-5">
@@ -77,8 +125,9 @@ export default function SignUp() {
                       <input
                         id="bordered-radio-1"
                         type="radio"
-                        value=""
-                        name="bordered-radio"
+                        value="0"
+                        name="professional"
+                        onChange={handleChange}
                       />
                       <label
                         for="bordered-radio-1"
@@ -91,8 +140,9 @@ export default function SignUp() {
                       <input
                         id="bordered-radio-2"
                         type="radio"
-                        value=""
-                        name="bordered-radio"
+                        value="1"
+                        name="professional"
+                        onChange={handleChange}
                       />
                       <label
                         for="bordered-radio-2"
@@ -102,7 +152,10 @@ export default function SignUp() {
                       </label>
                     </div>
                   </div>
-                  <button className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <button
+                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                    onClick={signupHandler}
+                  >
                     <svg
                       className="w-6 h-6 -ml-2"
                       fill="none"
