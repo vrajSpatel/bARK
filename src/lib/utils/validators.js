@@ -7,6 +7,19 @@ export function validateEmail(email) {
 export function validateString(str) {
   return /^[a-zA-Z0-9 ]+$/.test(str) ? true : false;
 }
+export function validateStringArray(Sarr) {
+  var res = true;
+  Sarr.forEach((str) => {
+    if (!/^[a-zA-Z0-9 ]+$/.test(str)) {
+      res = false;
+      return;
+    }
+  });
+  return res;
+}
+export function validateAddress(str) {
+  return /^[a-zA-Z0-9 ,-]+$/.test(str) ? true : false;
+}
 export function validateNumber(str) {
   // console.log(typeof str);
   // console.log(/^\d+$/.test(str), str, "hello");
