@@ -10,7 +10,7 @@ const Header = () => {
                     <div className="flex items-center space-x-4">
                         {/* <!-- Logo --> */}
                         <Link href="/" className="text-2xl font-bold text-gray-800">
-                            Logo
+                            BArk
                         </Link>
 
                         {/* <!-- Dropdown --> */}

@@ -1,0 +1,134 @@
+.homemain{
+    background-color: rgb(212, 230, 246);
+    padding: 2.4rem 0;
+}
+
+.homemain .introtext h1{
+    margin-left: 20rem;
+    font-size: 3.3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.input-and-btn-row .large-split-input {
+    max-width: 80%;
+}
+
+.homemain>.searchbars{
+    display: flex;
+    flex: 1 0 100%;
+    width: 100% !important;
+    flex-direction: row !important;
+}
+
+.homemain>.searchbars>.inputsearch{
+    max-width: 80%;
+    flex: 0 0 35.625em;
+    display: flex !important;
+    margin-left: 19rem;
+}
+
+.homemain>.searchbars>.inputsearch input{
+    border-radius: 4px  !important;
+    border: 2px solid rgb(58, 56, 56);
+    font-size: 16px;
+    height: 100%;
+    position: relative;
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    min-height: 3em;
+    padding: .75em 1em;
+    line-height: 26px;
+}
+
+#service{
+    width: 70%;
+}
+#pincode{
+    width: 30%;
+    margin-left: 7px;
+}
+
+.searchbars .searchbutton{
+    padding: .70em 1em;
+    min-width: 7.75em;
+    color: #fff !important;
+    box-shadow: 0 3px 6px 0 rgba(45, 122, 241, .3);
+    background-color: #2d7af1;
+    border-color: #2d7af1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 4px;
+    margin-left: 6px;
+    height: 100%;
+}
+
+/*facility types */
+
+.homemain > .optionavailable{
+    margin-top: 4rem;
+    padding: 5rem 3rem;
+    background-color: white;
+    background-image: url('../assets/optionback.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;  
+    /* filter: blur(0.5px); */
+}
+
+.homemain > .optionavailable .professions{
+    margin-left: 1rem;
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgb(27, 58, 148);
+}
+
+.homemain > .optionavailable  h3{
+    margin-left: 1rem;
+    font-weight: 700;
+    color: rgb(27, 58, 148);
+
+}
+
+.homemain > .optionavailable .options{
+    margin-top: 3em;
+}
+
+.homemain > .optionavailable .container_option{
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-gap: 40px 20px ;
+    padding-left: 1rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.homemain > .optionavailable .container_option .op{
+    height: 10rem;
+    width: 18rem;
+    background-image: url('../assets/options_background.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;  
+    border-radius: 20px;
+    color: white;
+    font-size: x-large;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homemain > .optionavailable .container_option .op:hover{
+    /* height: 10.5rem;
+    width: 18.5rem; */
+    font-weight: 800;
+    color: rgb(181, 25, 25);
+    cursor: pointer;
+}
