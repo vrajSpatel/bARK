@@ -8,6 +8,7 @@ import {
 } from "@/lib/utils/validators";
 import ProfessionalUser from "@/lib/Schema/Puser";
 import { dbConnect } from "@/lib/db";
+import fileUploader from "./fileuploader";
 
 export async function POST(request) {
   try {
@@ -50,6 +51,35 @@ export async function POST(request) {
     var tellNumber = body?.get("tellNumber");
     var website = await JSON.parse(body?.get("website"));
     var company = await JSON.parse(body?.get("company"));
+    var profileImage = await body?.get("profileImage");
+    var ImageName = undefined;
+    try {
+      const uploadedImage = await fileUploader(profileImage, Response);
+      if (uploadedImage?.error === "1") {
+        return Response.json(
+          {
+            error:
+              "Invalid image format, please upload (png, JPEG, JPG, WebP, HEIF, HEIC) type images",
+          },
+          { error: 404 }
+        );
+      } else if (uploadedImage?.error === "2") {
+        return Response.json(
+          {
+            error: "An unknown error occured, Please try again later1!",
+          },
+          { error: 404 }
+        );
+      } else if (uploadedImage?.newName) {
+        ImageName = uploadedImage.newName;
+      }
+    } catch (err) {
+      console.log(err);
+      return Response.json(
+        { error: "an unexpected error occured! please try again later!" },
+        { status: 404 }
+      );
+    }
 
     // console.log(name && !validateString(name));
     // console.log(service && !validateString(service));
@@ -72,16 +102,18 @@ export async function POST(request) {
     if (
       (name && !validateString(name)) ||
       (service && !validateString(service)) ||
-      (area && area.nationwide && !validateBoolean(area.nationwide)) ||
-      (area && area.pincode && !validateNumber(area.pincode)) ||
-      (area && area.radius && !validateNumber(area.radius)) ||
+      (area && area?.nationwide && !validateBoolean(area?.nationwide)) ||
+      (area && area?.pincode && !validateNumber(area?.pincode)) ||
+      (area && area?.radius && !validateNumber(area?.radius)) ||
       (companyName && !validateString(companyName)) ||
       (tellNumber && !validateNumber(tellNumber)) ||
-      (website && website.exist && !validateBoolean(website.exist)) ||
-      (website && website.link && !validateUrl(website.link)) ||
-      (company && !validateString(company.size)) ||
-      (company && company.salesTeam && !validateBoolean(company.salesTeam)) ||
-      (company && company.socialMedia && !validateBoolean(company.socialMedia))
+      (website && website?.exist && !validateBoolean(website?.exist)) ||
+      (website && website?.link && !validateUrl(website?.link)) ||
+      (company && !validateString(company?.size)) ||
+      (company && company?.salesTeam && !validateBoolean(company?.salesTeam)) ||
+      (company &&
+        company?.socialMedia &&
+        !validateBoolean(company?.socialMedia))
     ) {
       return Response.json(
         { error: "invalid form data provided" },
@@ -91,19 +123,19 @@ export async function POST(request) {
 
     //area field logical validation -------------------------
 
-    if (area.nationwide === "false") {
-      if (!area.pincode) {
+    if (area?.nationwide === "false") {
+      if (!area?.pincode) {
         return Response.json(
           { error: "pincode missing in area field!" },
           { status: 400 }
         );
-      } else if (!area.radius) {
+      } else if (!area?.radius) {
         return Response.json(
           { error: "radius missing in area field!" },
           { status: 400 }
         );
       }
-    } else if (area.nationwide === "true") {
+    } else if (area?.nationwide === "true") {
       area = { nationwide: true };
     } else {
       return Response.json(
@@ -114,7 +146,7 @@ export async function POST(request) {
 
     //website field logical validation ---------------------
     if (website?.exist === "true") {
-      if (!website.link) {
+      if (!website?.link) {
         return Response.json(
           { error: "missing link in website field!" },
           { status: 400 }
@@ -197,6 +229,7 @@ export async function POST(request) {
             tellNumber,
             website,
             company,
+            profileImage: ImageName,
           }
         );
         return Response.json({ success: "Userdata updated successfully!" });

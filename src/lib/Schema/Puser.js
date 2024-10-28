@@ -48,6 +48,9 @@ const professionaluserSchema = new Schema({
     salesTeam: Boolean,
     socialMedia: Boolean,
   },
+  profileImage: {
+    type: String,
+  },
 });
 
 const ProfessionalUser =

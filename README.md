@@ -62,3 +62,10 @@ tellNumber:123
 area:{"nationwide":"true","pincode":"390024","radius":"150"}
 service:web development
 companyName:nothing special
+
+
+to do: 
+fetch user profile : done
+add userImage in updateUser route
+fetch professional user list
+
