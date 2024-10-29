@@ -3,11 +3,8 @@ import field from "../api/api.js";
 
 const explore = () => {
   //   console.log(field);
-  var field1 = JSON.parse(field);
-  console.log(field1.field.household);
-  // const jstu = JSON.stringify(Feild)
-  // console.log(jstu.household)
-  console.log();
+  //   var field1 = JSON.parse(field);
+  //   console.log(field1.field.household);
   return (
     <>
       <div className="homemain">
@@ -34,6 +31,7 @@ const explore = () => {
           <h3>( that are mostly trendy )</h3>
 
           <div className="options">
+
             <div className="container_option">
               <div className="op">household</div>
               <div className="op">Health</div>
@@ -46,10 +44,19 @@ const explore = () => {
               <div className="op">Wedding</div>
               <div className="op">Bussniess</div>
             </div>
+
           </div>
         </div>
 
-        <div className="subselection"></div>
+        <div className="subselection">
+          <div class="card">
+            <img src="img_avatar.png" alt="Avatar" />
+              <div class="container">
+                <h4><b>John Doe</b></h4>
+                <p>Architect & Engineer</p>
+              </div>
+          </div>
+        </div>
       </div>
     </>
   );
