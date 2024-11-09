@@ -1,0 +1,85 @@
+h1 {
+    margin-left: 14rem;
+    margin-top: 2rem;
+    font-size: 3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.container_userpost {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_userpost>.center_container {
+    height: 28rem;
+    width: 75%;
+    background-color: rgb(231, 233, 234);
+    margin: 3rem 5rem;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+}
+
+.container_userpost>.center_container .alldetail{
+    background-color: rgb(243, 243, 243);
+}
+
+.container_userpost>.center_container .cards_all{
+    overflow-y:scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container_userpost>.center_container .userpostcard{
+    background-color: rgb(244, 244, 242);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.container_userpost>.center_container .alldetail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_userpost>.center_container .continer_alldetail{
+    margin: 0.7rem;
+    /* background-color: rgb(205, 187, 170); */
+    background-image: url('../assets/cardbackgroundd.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90%;
+    width: 90%;
+}
+
+.container_userpost>.center_container .continer_alldetail h3{  
+    font-size: x-large;    
+    justify-self: center;
+    padding-top: 20px;
+}
+
+.container_userpost>.center_container .continer_alldetail .detail{
+    display: flex;
+    height: 70%;
+    margin-top: 1rem;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    padding-left: 7rem;
+}
+
+.container_userpost>.center_container .continer_alldetail .detail .linedetail{
+    margin-bottom: 10px;
+}
