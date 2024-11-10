@@ -1,5 +1,6 @@
 import { dbConnect } from "@/lib/db";
 import authModel from "@/lib/Schema/Authentication";
+import ProfessionalUser from "@/lib/Schema/Puser";
 import { validateEmail } from "@/lib/utils/validators";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -32,8 +33,13 @@ export async function POST(request) {
       const payload = { email };
       const secretKey = process.env.JWT_KEY;
       const token = jwt.sign(payload, secretKey, { expiresIn: "10d" });
-
-      return Response.json({ success: "password matched", auth_token: token });
+      const userDataCheck = await ProfessionalUser.findOne({ email });
+      return Response.json({
+        success: "password matched",
+        auth_token: token,
+        professional: userCheck.professional,
+        pendingProcess: userDataCheck ? "0" : "1",
+      });
     } else {
       return Response.json({ error: "password is incorrect" }, { status: 401 });
     }

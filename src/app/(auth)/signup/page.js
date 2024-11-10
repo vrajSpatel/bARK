@@ -2,15 +2,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import dogimage from "../../assets/dog_image.jpg";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import { apiContext } from "@/lib/Context/apiContext";
 
 export default function SignUp() {
-  const router = useRouter();
+  const { signupAPI } = useContext(apiContext);
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-    professional: "",
+    // email: `dharmik${Date.now()}@gmail.com`,
+    // email: `dharmik${"1"}@gmail.com`,
+    email: "dharmik37458@gmail.com",
+    password: "hello world",
+    professional: "0",
   });
 
   const handleChange = (e) => {
@@ -20,33 +22,6 @@ export default function SignUp() {
     });
   };
 
-  const signupHandler = () => {
-    const formData = new FormData();
-    formData.append("email", userData.email);
-    formData.append("password", userData.password);
-    formData.append("professional", userData.professional);
-
-    //await fetch
-    const response = {
-      success: "account created successfully!",
-      auth_token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRoYXJtaWsyNzQ1OEBnbWFpbC5jb20iLCJpYXQiOjE3MjkyNTQ2OTIsImV4cCI6MTczMDExODY5Mn0.-IElcVExJ-tgUBJdYJTmX6X2m-Adux-O6SFndmVWJps",
-      professional: "0",
-    };
-
-    if (response.success) {
-      // set cookies in nextjs : auth_token, professional, userdataIncomplete
-      if (response?.professional === "0") {
-        router.push("/signup/userdetail");
-        //redirect user to userdetails
-      } else if (response?.professional === "1") {
-        //redirect user to userdetails
-        router.push("/signup/professionaluser");
-      }
-    } else if (response.error) {
-      return;
-    }
-  };
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
@@ -84,7 +59,7 @@ export default function SignUp() {
                     <div className="bg-white p-1 rounded-full">
                       <svg className="w-6" viewBox="0 0 32 32">
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M16 4C9.371 4 4 9.371 4 16c0 5.3 3.438 9.8 8.207 11.387.602.11.82-.258.82-.578 0-.286-.011-1.04-.015-2.04-3.34.723-4.043-1.609-4.043-1.609-.547-1.387-1.332-1.758-1.332-1.758-1.09-.742.082-.726.082-.726 1.203.086 1.836 1.234 1.836 1.234 1.07 1.836 2.808 1.305 3.492 1 .11-.777.422-1.305.762-1.605-2.664-.301-5.465-1.332-5.465-5.93 0-1.313.469-2.383 1.234-3.223-.121-.3-.535-1.523.117-3.175 0 0 1.008-.32 3.301 1.23A11.487 11.487 0 0116 9.805c1.02.004 2.047.136 3.004.402 2.293-1.55 3.297-1.23 3.297-1.23.656 1.652.246 2.875.12 3.175.77.84 1.231 1.91 1.231 3.223 0 4.61-2.804 5.621-5.476 5.922.43.367.812 1.101.812 2.219 0 1.605-.011 2.898-.011 3.293 0 .32.214.695.824.578C24.566 25.797 28 21.3 28 16c0-6.629-5.371-12-12-12z"
                         />
                       </svg>
@@ -95,7 +70,7 @@ export default function SignUp() {
 
                 <div className="my-12 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    Already a user ?{" "}
+                    Already a user ?
                     <Link className="text-blue-600" href="/signin">
                       signin
                     </Link>
@@ -107,6 +82,7 @@ export default function SignUp() {
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="email"
                     placeholder="Email"
+                    name="email"
                     onChange={handleChange}
                     value={userData.email}
                   />
@@ -114,6 +90,7 @@ export default function SignUp() {
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="password"
                     placeholder="Password"
+                    name="password"
                     onChange={handleChange}
                     value={userData.password}
                   />
@@ -126,11 +103,12 @@ export default function SignUp() {
                         id="bordered-radio-1"
                         type="radio"
                         value="0"
+                        defaultChecked
                         name="professional"
                         onChange={handleChange}
                       />
                       <label
-                        for="bordered-radio-1"
+                        htmlFor="bordered-radio-1"
                         className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-blue-300"
                       >
                         Consumer
@@ -145,7 +123,7 @@ export default function SignUp() {
                         onChange={handleChange}
                       />
                       <label
-                        for="bordered-radio-2"
+                        htmlFor="bordered-radio-2"
                         className="w-full py-4 ms-2 text-sm font-medium text-blue-400 dark:text-blue-300"
                       >
                         Professional
@@ -154,15 +132,18 @@ export default function SignUp() {
                   </div>
                   <button
                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                    onClick={signupHandler}
+                    onClick={() => {
+                      console.log(userData);
+                      signupAPI(userData);
+                    }}
                   >
                     <svg
                       className="w-6 h-6 -ml-2"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                       <circle cx="8.5" cy="7" r="4" />

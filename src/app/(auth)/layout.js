@@ -1,8 +1,3 @@
-export default function Auth({ children }) {
-    return (
-      <>
-        {children}
-      </>
-    );
-  }
-  
+export default function layout({ children }) {
+  return <>{children}</>;
+}

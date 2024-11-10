@@ -4,7 +4,6 @@ import Image from "next/image";
 import dogimage from "../../assets/dog_image.jpg";
 import { useContext, useState } from "react";
 import { apiContext } from "@/lib/Context/apiContext";
-import { deleteCookie, getCookie, setCookie } from "@/lib/utils/cookies";
 
 const signin = () => {
   const { signinAPI } = useContext(apiContext);
@@ -72,8 +71,8 @@ const signin = () => {
 
                 <div className="my-12 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    Not a user ?{" "}
-                    <Link className="text-blue-600" href="/userdetail">
+                    Not a user ?
+                    <Link className="text-blue-600" href="/signup">
                       signup
                     </Link>
                   </div>
@@ -99,7 +98,6 @@ const signin = () => {
                   <button
                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                     onClick={() => {
-                      console.log(userData);
                       signinAPI(userData);
                     }}
                   >

@@ -27,7 +27,10 @@ export async function POST() {
       { email },
       { _id: 0, email: 0 }
     );
-    return Response.json({ userData: userCheck });
+    return Response.json({
+      success: "Data fetched successfully!",
+      userData: userCheck,
+    });
   } catch (error) {
     console.log(error);
     return Response.json({ error: "please signin again1!" }, { status: 422 });

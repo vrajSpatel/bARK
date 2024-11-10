@@ -1,12 +1,11 @@
 export function getCookie(name) {
-  var value;
+  var value = null;
   document.cookie.split(";").map((element) => {
     var arr = element.split("=");
     if (arr[0] === ` ${name}`) {
       value = arr[1];
     }
   });
-  console.log(value);
   return value;
 }
 
