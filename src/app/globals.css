@@ -2,4 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+.errorMessage,
+.successMessage {
+  /* background: white; */
+  padding: 0 0 5px 0;
+  position: fixed;
+  left: 2%;
+  height: 40px;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  box-shadow: 1px 1px 7px -3.5px black;
+  font-weight: bold;
+  overflow: hidden;
+}
+.errorMessage{
+    background:rgb(254, 223, 223);
+}
+.successMessage{
+    background:rgb(228, 254, 223);
 
+}
+.errorMessage::after,
+.successMessage::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  animation-name: bottomLine;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+}
+.errorMessage::after {
+  background: red;
+}
+.successMessage::after {
+  background: green;
+}
+@keyframes bottomLine {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

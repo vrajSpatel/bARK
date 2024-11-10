@@ -59,7 +59,10 @@ export async function POST(request) {
         },
       },
     ]);
-    return Response.json({ userData: fetchPosts });
+    return Response.json({
+      success: "user posts fetched successfully",
+      userData: fetchPosts,
+    });
   } catch (error) {
     console.log(error);
     return Response.json({ error: "please signin again1!" }, { status: 422 });

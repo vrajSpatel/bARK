@@ -64,6 +64,7 @@ export const ApiProvider = ({ children }) => {
         setErrorMessage(response.error);
         return;
       } else if (response.success) {
+        console.log(response.success);
         setSuccessMessage(response.success);
         setCookie("auth_token", response.auth_token, 10);
         setCookie("professional", response.professional, 10);
@@ -168,6 +169,39 @@ export const ApiProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const fetchUserPostAPI = async (filters) => {
+    if (professionalUser.current === "0") {
+      setErrorMessage(
+        "You neet to signup as a professional user to view user posts!"
+      );
+      return;
+    }
+    const data = new FormData();
+    Object.keys(filters).map((element) => {
+      data.append(element, filters[element]);
+    });
+    try {
+      if (!auth_token.current) {
+        return;
+      }
+      var response = await fetch(`${serverUrl}/fetchPosts`, {
+        method: "POST",
+        headers: { auth_token: auth_token.current },
+        body: data,
+      });
+      response = await response.json();
+      console.log(response);
+      if (response.error) {
+        setErrorMessage(response.error);
+        return;
+      } else if (response.success) {
+        setSuccessMessage(response.success);
+        return response.userData;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <apiContext.Provider
       value={{
@@ -183,6 +217,7 @@ export const ApiProvider = ({ children }) => {
         signupAPI,
         updateUserAPI,
         fetchUserAPI,
+        fetchUserPostAPI,
       }}
     >
       {children}
