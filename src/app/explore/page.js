@@ -1,5 +1,6 @@
 import "../explore/explore.css";
 import field from "../api/api.js";
+import Image from 'next/image'
 
 const explore = () => {
   //   console.log(field);
@@ -49,12 +50,68 @@ const explore = () => {
         </div>
 
         <div className="subselection">
-          <div class="card">
-            <img src="img_avatar.png" alt="Avatar" />
-              <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-              </div>
+          <div className="headingoption">
+            <h1>HouseHold</h1>
+            <div className="contianer_options">
+              {
+                <div class="card">
+                  <div className="img_card">
+                    <Image src={require('../assets/dogsideeye.jpg')} />
+                  </div>
+                  <div class="container">
+                    <h4><b>Gardening</b></h4>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div className="headingoption">
+            <h1>HouseHold</h1>
+            <div className="contianer_options">
+              {
+                <div class="card">
+                  <div className="img_card">
+                    <Image src={require('../assets/dogsideeye.jpg')} />
+                  </div>
+                  <div class="container">
+                    <h4><b>Gardening</b></h4>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div className="headingoption">
+            <h1>HouseHold</h1>
+            <div className="contianer_options">
+              {
+                <div class="card">
+                  <div className="img_card">
+                    <Image src={require('../assets/dogsideeye.jpg')} />
+                  </div>
+                  <div class="container">
+                    <h4><b>Gardening</b></h4>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div className="headingoption">
+            <h1>HouseHold</h1>
+            <div className="contianer_options">
+              {
+                <div class="card">
+                  <div className="img_card">
+                    <Image src={require('../assets/dogsideeye.jpg')} />
+                  </div>
+                  <div class="container">     
+                    <h4><b>Gardening</b></h4>
+                  </div>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </div>
