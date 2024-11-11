@@ -1,34 +1,35 @@
+import dogimage from '../assets/demo_card.jpg'
 var api = {
   field: {
     household: [
       {
         name: "Gardening",
-        image: "",
+        image: dogimage,
         online: true,
       },
       {
         name: "House Cleaning",
-        image: "",
+        image: dogimage,
         online: false,
       },
       {
         name: "Painting Service",
-        image: "",
+        image: dogimage,
         online: false,
       },
       {
         name: "Arctitectural Service",
-        image: "",
+        image: dogimage,
         online: false,
       },
       {
         name: "Arctitectural Service",
-        image: "",
+        image: dogimage,
         online: true,
       },
       {
         name: "Building Contractors",
-        image: "",
+        image: dogimage,
         online: false,
       },
       {
@@ -60,39 +61,37 @@ var api = {
         name: "SolarPanel Installation",
         image: "",
         online: true,
-      },
+      }
     ],
-  },
-
-  Health: [
+  health: [
     {
       name: "personal trainer",
-      image: "",
+      image: dogimage,
       online: true,
     },
     {
       name: "counselling",
-      image: "",
+      image: dogimage,
       online: true,
     },
     {
       name: "Massage",
-      image: "",
+      image: dogimage,
       online: false,
     },
     {
       name: "Acupuncture & Acupressure",
-      image: "",
+      image: dogimage,
       online: true,
     },
     {
       name: " Addiction Therapy",
-      image: "",
+      image: dogimage,
       online: true,
     },
     {
       name: "Adolescent Counselling",
-      image: "",
+      image: dogimage,
       online: true,
     },
     {
@@ -127,7 +126,7 @@ var api = {
     },
   ],
 
-  "Sports and Fitness": [
+  "SAF": [
     {
       name: "Badminton Lessons",
       image: "",
@@ -184,7 +183,7 @@ var api = {
       online: true,
     },
   ],
-  Entertainment: {
+  entertainment: {
     Children: [
       {
         name: "Balloon Twisters & Entertainers",
@@ -317,6 +316,7 @@ var api = {
   Wedding: [],
 
   Bussniess: [],
+}
 };
 
 var api1 = JSON.stringify(api);
